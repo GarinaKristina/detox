@@ -1,6 +1,5 @@
-// import constants from '@config/constants.ts'
-// import Helper from '@utils/Helper.ts'
-// import Logger from '@utils/Logger.ts'
+import { expect } from 'detox'
+import Logger from 'helpers/Logger'
 
 export default abstract class BaseComponent {
   private locator: string | RegExp
@@ -9,117 +8,97 @@ export default abstract class BaseComponent {
     this.locator = locator
   }
 
-  // public getElement(options?: GetElementOptions): Detox.NativeElement {
-  //   const platformDefaultType = device.getPlatform() === 'ios' ? 'id' : 'label'
-  //   const type = options?.type || platformDefaultType
+  public getElement(
+    elementIdentifier: tElementIdentifier
+  ): Detox.NativeElement {
+    let baseElement: Detox.NativeElement | null = null
 
-  //   let matcher = this.getMatcher(type, this.adjustLocator(type, this.locator))
+    const byFacade: { [key: string]: () => Detox.NativeMatcher } = {
+      id: () => by.id(this.locator),
+      label: () => by.label(this.locator),
+      text: () => by.text(this.locator),
+    }
 
-  //   if (options?.with) {
-  //     const type = options?.with.type || platformDefaultType
-  //     const relatedMatcher = this.getMatcher(type, this.adjustLocator(type, options.with.locator))
+    baseElement = element(byFacade[elementIdentifier]())
+    return baseElement
+  }
 
-  //     const relationHandlers = {
-  //       and: (m: Detox.NativeMatcher, r: Detox.NativeMatcher) => m.and(r),
-  //       withAncestor: (m: Detox.NativeMatcher, r: Detox.NativeMatcher) => m.withAncestor(r),
-  //       withDescendant: (m: Detox.NativeMatcher, r: Detox.NativeMatcher) => m.withDescendant(r),
-  //     }
+  public async tap(
+    elementIdentifier: tElementIdentifier = 'label'
+  ): Promise<void> {
+    await this.getElement(elementIdentifier).tap()
+  }
 
-  //     matcher = relationHandlers[options.with.relation](matcher, relatedMatcher)
-  //   }
+  public async longPress(
+    elementIdentifier: tElementIdentifier = 'label'
+  ): Promise<void> {
+    await this.getElement(elementIdentifier).longPress()
+  }
 
-  //   const baseElement: Detox.NativeElement | Detox.IndexableNativeElement = element(matcher)
+  public async getElementAttributes(
+    elementIdentifier: tElementIdentifier = 'label'
+  ): Promise<ElementAttributesUnion> {
+    return this.getElement(elementIdentifier).getAttributes()
+  }
 
-  //   if (!options?.skipIndexCheck) {
-  //     const indexToApply = typeof options?.index === 'number' ? options.index : 0
-  //     if (this.isIndexableElement(baseElement)) {
-  //       return baseElement.atIndex(indexToApply)
-  //     }
-  //   }
+  public async swipeTo(
+    direction: 'down' | 'up' | 'right' | 'left',
+    elementIdentifier: tElementIdentifier = 'label'
+  ): Promise<void> {
+    await this.getElement(elementIdentifier).swipe(direction)
+  }
 
-  //   return baseElement
-  // }
+  /**
+   * Simulates a scroll on the element with the provided options.
+   *
+   * @param offsetPoints - the offset to scroll, in points
+   * @param direction — the scroll’s direction (valid input: "left"/"right"/"up"/"down")
+   * @param options - (Optional) Element locator options.
+   */
+  public async scrollTo(
+    offsetPoints = 250,
+    direction: Detox.Direction = 'down',
+    elementIdentifier: tElementIdentifier = 'label'
+  ): Promise<void> {
+    await this.getElement(elementIdentifier).scroll(offsetPoints, direction)
+  }
 
-  // public async tap(options?: GetElementOptions): Promise<void> {
-  //   await this.getElement(options).tap()
-  // }
+  /**
+   * Scrolling within an element to reach another element.
+   *
+   * @param element: Detox.NativeElement,
+   * @param offsetPoints - the offset to scroll, in points
+   * @param direction — the scroll’s direction (valid input: "left"/"right"/"up"/"down")
+   * @param options - (Optional) Element locator options.
+   */
+  public async scrollToElement(
+    element: Detox.NativeElement,
+    offsetPoints?: number,
+    direction: Detox.Direction = 'down',
+    options?: tElementIdentifier
+  ): Promise<void> {
+    for (let attempt = 1; attempt <= 10; attempt++) {
+      try {
+        await this.scrollTo(offsetPoints, direction, options)
+        await expect(element).toBeVisible(35)
+        break
+      } catch (error) {
+        Logger.info(
+          `[BaseComponent.scrollToElement] Error occurred while scrolling to element: ${error}`
+        )
+      }
 
-  // public async longPress(options?: GetElementOptions): Promise<void> {
-  //   await this.getElement(options).longPress()
-  // }
-
-  // public async getElementAttributes(options?: GetElementOptions): Promise<ElementAttributesUnion> {
-  //   return this.getElement(options).getAttributes()
-  // }
-
-  // public async swipeTo(direction: 'down' | 'up' | 'right' | 'left', options?: GetElementOptions): Promise<void> {
-  //   await this.getElement(options).swipe(direction)
-  // }
-
-  // /**
-  //  * Simulates a scroll on the element with the provided options.
-  //  *
-  //  * @param offsetPoints - the offset to scroll, in points
-  //  * @param direction — the scroll’s direction (valid input: "left"/"right"/"up"/"down")
-  //  * @param options - (Optional) Element locator options.
-  //  */
-  // public async scrollTo(offsetPoints = 250, direction: Detox.Direction = 'down', options?: GetElementOptions): Promise<void> {
-  //   await this.getElement(options).scroll(offsetPoints, direction)
-  // }
-
-  // /**
-  //  * Scrolling within an element to reach another element.
-  //  *
-  //  * @param element: Detox.NativeElement,
-  //  * @param offsetPoints - the offset to scroll, in points
-  //  * @param direction — the scroll’s direction (valid input: "left"/"right"/"up"/"down")
-  //  * @param options - (Optional) Element locator options.
-  //  */
-  // public async scrollToElement(
-  //   element: Detox.NativeElement,
-  //   offsetPoints?: number,
-  //   direction: Detox.Direction = 'down',
-  //   options?: GetElementOptions
-  // ): Promise<void> {
-  //   for (let attempt = 1; attempt <= 10; attempt++) {
-  //     try {
-  //       await this.scrollTo(offsetPoints, direction, options)
-  //       await Helper.waitFor(element, constants.waitForTimeout._5)
-  //       break
-  //     } catch (error) {
-  //       Logger.info(`[BaseComponent.scrollToElement] Error occurred while scrolling to element: ${error}`)
-  //     }
-
-  //     if (attempt === 10) {
-  //       Logger.error(`[BaseComponent.scrollToElement] Element not visible after ${attempt} scrolling attempts`)
-  //       throw new Error(`[BaseComponent.scrollToElement] Element not visible after ${attempt} scrolling attempts`)
-  //     }
-  //   }
-  //   Logger.info(`[BaseComponent.scrollToElement] Element found while scrolling\n [Element]: ${JSON.stringify(element)}`)
-  // }
-
-  // private getMatcher<T extends LocatorType>(type: T, locator: LocatorValue<T>): Detox.NativeMatcher {
-  //   const matchers: Matchers = {
-  //     id: (loc: string | RegExp) => by.id(loc),
-  //     label: (loc: string | RegExp) => by.label(loc),
-  //     text: (loc: string | RegExp) => by.text(loc),
-  //     type: (loc: string) => by.type(loc),
-  //   }
-
-  //   const matcherFn = matchers[type] as MatcherFunction<LocatorValue<T>>
-  //   return matcherFn(locator)
-  // }
-
-  // private isIndexableElement(element: Detox.NativeElement | Detox.IndexableNativeElement): element is Detox.IndexableNativeElement {
-  //   return 'atIndex' in element
-  // }
-
-  // private adjustLocator(type: LocatorType, locator: string | RegExp) {
-  //   return type === 'id' && device.getPlatform() === 'ios' ? this.prependTestIdToLocator(locator) : locator
-  // }
-
-  // private prependTestIdToLocator(locator: string | RegExp): string | RegExp {
-  //   if (typeof locator === 'string') return `{TEST_ID}${locator}`
-  //   return new RegExp(`\\{TEST_ID\\}${locator.source}`, locator.flags)
-  // }
+      if (attempt === 10) {
+        Logger.error(
+          `[BaseComponent.scrollToElement] Element not visible after ${attempt} scrolling attempts`
+        )
+        throw new Error(
+          `[BaseComponent.scrollToElement] Element not visible after ${attempt} scrolling attempts`
+        )
+      }
+    }
+    Logger.info(
+      `[BaseComponent.scrollToElement] Element found while scrolling\n [Element]: ${JSON.stringify(element)}`
+    )
+  }
 }

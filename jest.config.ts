@@ -1,5 +1,9 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
+  preset: 'ts-jest',
+  transform: {
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
+  },
   rootDir: '.',
   testMatch: ['<rootDir>/e2e/**/*.test.ts'],
   testTimeout: 120000,

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ESNext"],
     "moduleDetection": "force",
     "module": "NodeNext",
     "rootDir": ".",
@@ -12,7 +12,7 @@
       "@pages/*": ["pages/*"],
       "@types/*": ["types/*"]
     },
-    "types": ["node", "jest", "detox", "jest-allure2-reporter/globals"],
+    "types": ["node", "jest", "detox"],
     "resolvePackageJsonExports": true,
     "resolvePackageJsonImports": true,
     "resolveJsonModule": true,

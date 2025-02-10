@@ -1,10 +1,5 @@
 import BasePage from './BasePage.ts'
-
+import HomePage from './HomePage.ts'
 import LoginPage from './LoginPage.ts'
 
-export {
-  BasePage,
-
-  LoginPage,
-  
-}
+export { BasePage, LoginPage, HomePage }
