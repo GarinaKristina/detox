@@ -2,27 +2,27 @@
 module.exports = {
   testRunner: {
     args: {
-      '$0': 'jest',
-      config: 'e2e/jest.config.js'
+      $0: 'jest',
+      config: './jest.config.ts',
     },
     jest: {
-      setupTimeout: 120000
-    }
+      setupTimeout: 120000,
+    },
   },
-   logger: {
+  logger: {
     level: 'debug',
-   },
+  },
   apps: {
     ios: {
       type: 'ios.app',
-      binaryPath: 'app/wdiodemoapp.app',    
+      binaryPath: 'app/wdiodemoapp.app',
     },
     android: {
       type: 'android.apk',
       binaryPath: 'app/android.wdio.native.apk',
-       testBinaryPath: 'app/app-debug-androidTest.apk',
-      reversePorts: [8081]
-    }
+      testBinaryPath: 'app/app-debug-androidTest.apk',
+      reversePorts: [8081],
+    },
   },
   devices: {
     simulator: {
@@ -41,11 +41,11 @@ module.exports = {
   configurations: {
     ios: {
       device: 'simulator',
-      app: 'ios'
+      app: 'ios',
     },
     android: {
       device: 'emulator',
-      app: 'android'
-    }
-  }
-};
+      app: 'android',
+    },
+  },
+}
