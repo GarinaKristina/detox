@@ -11,6 +11,18 @@ module.exports = {
   },
   logger: {
     level: 'debug',
+    overrideConsole: false,
+    options: {
+      colors: true,
+      forceColor: false,
+      showProcess: false,
+      showDate: false,
+      maxExceptionLines: 'auto',
+      showLoggerName: false,
+      showPid: false,
+      showLevel: true,
+      showMetadata: false,
+    },
   },
   apps: {
     ios: {

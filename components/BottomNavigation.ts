@@ -1,39 +1,20 @@
-import { BaseComponent } from '@components/index.ts'
+import { BaseComponent, Button } from '@components/index.ts'
 
-// type tBaseBottomNavItems = 'home' | 'more'
-// type tBottomNavItems = tBaseBottomNavItems | 'dashboards' | 'meetings' | 'templateReports'
-// type tRiskBottomNavItems = tBaseBottomNavItems | 'intakeRequests' | 'conflictReports'
+type tFooterMenu = 'login' | 'home' | 'webview' | 'forms' | 'swipe' | 'drag'
 
 export class BottomNavigation extends BaseComponent {
-  // private home: AbstractComponent = new AbstractComponent('Home')
-  // private dashboards: AbstractComponent = new AbstractComponent('Dashboards')
-  // private intakeRequests: AbstractComponent = new AbstractComponent('Intake Requests')
-  // private conflictReports: AbstractComponent = new AbstractComponent('Conflicts Reports')
-  // private meetings: AbstractComponent = new AbstractComponent('Meetings')
-  // private more: AbstractComponent = new AbstractComponent('More')
-
-  // //DC theme
-  // private templateReports: AbstractComponent = new AbstractComponent('Template Reports')
+  private login = new Button('Login')
+  private home = new Button('Home')
+  private webview = new Button('Webview')
+  private forms = new Button('Forms')
+  private swipe = new Button('Swipe')
+  private drag = new Button('Drag')
 
   constructor() {
     super('')
   }
 
-  // @Step('Open bottom navigation menu item', ['menuItemName'])
-  // async openMenuItem(menuItemName: tBottomNavItems | tRiskBottomNavItems) {
-  //   if (device.getPlatform() === 'ios' && menuItemName === 'more') {
-  //     const menuItem = this[menuItemName].getElement({
-  //       with: {
-  //         type: 'type',
-  //         locator: 'RNSVGSvgView',
-  //         relation: 'withDescendant',
-  //       },
-  //     })
-  //     await Helper.waitFor(menuItem)
-  //     await menuItem.tap()
-  //   } else {
-  //     await Helper.waitFor(this[menuItemName].getElement())
-  //     await this[menuItemName].tap()
-  //   }
-  // }
+  public async openFooterMenu(menu: tFooterMenu): Promise<void> {
+    await this[menu].tap()
+  }
 }
