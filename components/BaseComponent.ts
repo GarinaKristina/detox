@@ -9,7 +9,7 @@ export default abstract class BaseComponent {
   }
 
   public getElement(
-    elementIdentifier: tElementIdentifier
+    elementIdentifier: tElementIdentifier = 'label'
   ): Detox.NativeElement {
     let baseElement: Detox.NativeElement | null = null
 
