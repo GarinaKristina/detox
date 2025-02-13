@@ -4,7 +4,6 @@
   "description": "Detox pet project",
   "main": "index.js",
   "scripts": {
-    "test:android": "detox test -c android",
     "test:ios": "detox test -c ios"
   },
   "author": "Kristina Garina",

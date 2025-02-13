@@ -4,6 +4,7 @@ import { BottomNavigation } from './BottomNavigation.ts'
 import { Button } from './Button.ts'
 import { Input } from './Input.ts'
 import { Label } from './Label.ts'
+import { Switch } from './Switch.ts'
 
 export {
   AbstractComponent,
@@ -12,4 +13,5 @@ export {
   Button,
   Input,
   Label,
+  Switch,
 }

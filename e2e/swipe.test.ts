@@ -1,4 +1,4 @@
-import { HomePage } from '@pages/index'
+import { HomePage, SwipePage } from '@pages/index'
 
 describe('Swipe', () => {
   beforeEach(async () => {
@@ -8,5 +8,7 @@ describe('Swipe', () => {
   it('Verify hide', async () => {
     await HomePage.verifyWelcomeMessage()
     await HomePage.bottomNavigation.openFooterMenu('swipe')
+    await SwipePage.swipeToPicture()
+    await SwipePage.verifyPictureIsVisible()
   })
 })
