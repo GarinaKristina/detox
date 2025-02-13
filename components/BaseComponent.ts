@@ -17,6 +17,7 @@ export default abstract class BaseComponent {
       id: () => by.id(this.locator),
       label: () => by.label(this.locator),
       text: () => by.text(this.locator),
+      type: () => by.type(this.locator as string),
     }
 
     baseElement = element(byFacade[elementIdentifier]())

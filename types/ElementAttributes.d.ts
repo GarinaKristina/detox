@@ -5,4 +5,4 @@ type ElementAttributesUnion =
   | { elements: Detox.IosElementAttributes[] }
   | { elements: Detox.AndroidElementAttributes[] }
 
-type tElementIdentifier = 'id' | 'label' | 'text'
+type tElementIdentifier = 'id' | 'label' | 'text' | 'type'

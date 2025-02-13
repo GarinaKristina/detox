@@ -1,19 +1,42 @@
 import BasePage from './BasePage'
-import { AbstractComponent, Button, Input, Label } from '@components/index'
+import { Button, Input, Label } from '@components/index'
+import { Switch } from '@components/Switch'
 import { expect } from 'detox'
 
 export default new (class FormsPage extends BasePage {
   private inputField = new Input('text-input')
   private inputResult = new Label('input-text-result')
-  private switch = new AbstractComponent('switch')
+  private switch = new Switch('switch')
   private switchText = new Label('switch-text')
-  private dropdown = new AbstractComponent('text_input')
-  private slider = new AbstractComponent('slider')
-  private done = new Button('done_button')
   private active = new Button('Active')
-  private inactive = new Button('Inactive')
 
   constructor() {
     super()
+  }
+
+  public async fillInputField(value: string) {
+    await this.inputField.setValue(value)
+  }
+
+  public async toggleSwitch() {
+    await this.switch.tap('id')
+  }
+
+  public async tapActive() {
+    await this.active.tap()
+  }
+
+  public async verifyInputResults(value: string) {
+    await expect(this.inputResult.getElement('id')).toHaveText(value)
+  }
+
+  public async verifyToggleSwitchState(state: 'on' | 'off') {
+    await this.switch.verifySwitchState(state, 'id')
+  }
+
+  public async verifyToggleSwitchText(text: 'ON' | 'OFF') {
+    await expect(this.switchText.getElement('id')).toHaveText(
+      `Click to turn the switch ${text}`
+    )
   }
 })()

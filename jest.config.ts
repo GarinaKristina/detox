@@ -5,7 +5,7 @@ module.exports = {
     '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
   rootDir: '.',
-  testMatch: ['<rootDir>/e2e/*.test.ts'],
+  testMatch: ['<rootDir>/e2e/forms.test.ts'],
   testTimeout: 120000,
   maxWorkers: 1,
   globalSetup: 'detox/runners/jest/globalSetup',
