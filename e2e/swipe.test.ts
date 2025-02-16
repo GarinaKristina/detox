@@ -1,4 +1,4 @@
-import { HomePage, SwipePage } from '@pages/index'
+import { HomePage, SwipePage } from '@pages/index.ts'
 
 describe('Swipe', () => {
   beforeEach(async () => {

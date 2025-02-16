@@ -1,4 +1,4 @@
-import { FormsPage, HomePage, LoginPage } from '@pages/index'
+import { FormsPage, HomePage, LoginPage } from '@pages/index.ts'
 
 describe('Forms', () => {
   beforeEach(async () => {

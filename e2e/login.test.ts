@@ -1,4 +1,4 @@
-import { HomePage, LoginPage } from '@pages/index'
+import { HomePage, LoginPage } from '@pages/index.ts'
 
 describe('Login/SignUp', () => {
   beforeEach(async () => {

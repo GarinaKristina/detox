@@ -1,6 +1,8 @@
-import { Button, Input, Label } from '@components/index'
-import BasePage from './BasePage'
 import { expect } from 'detox'
+
+import { Button, Input, Label } from '@components/index.ts'
+
+import BasePage from './BasePage.ts'
 
 export default new (class LoginPage extends BasePage {
   private signUpTab = new Button('Sign up')

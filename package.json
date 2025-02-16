@@ -1,6 +1,7 @@
 {
   "name": "detox",
   "version": "1.0.0",
+  "type": "module",
   "description": "Detox pet project",
   "main": "index.js",
   "scripts": {

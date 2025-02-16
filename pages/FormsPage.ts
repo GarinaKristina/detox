@@ -1,7 +1,9 @@
-import BasePage from './BasePage'
-import { Button, Input, Label } from '@components/index'
-import { Switch } from '@components/Switch'
 import { expect } from 'detox'
+
+import { Button, Input, Label } from '@components/index.ts'
+import { Switch } from '@components/Switch.ts'
+
+import BasePage from './BasePage.ts'
 
 export default new (class FormsPage extends BasePage {
   private inputField = new Input('text-input')

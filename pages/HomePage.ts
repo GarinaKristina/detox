@@ -1,6 +1,8 @@
-import BasePage from './BasePage'
-import { Label } from '@components/index'
 import { expect } from 'detox'
+
+import { Label } from '@components/index.ts'
+
+import BasePage from './BasePage.ts'
 
 export default new (class HomePage extends BasePage {
   private welcomeMessage = new Label(

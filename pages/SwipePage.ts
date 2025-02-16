@@ -1,6 +1,8 @@
-import { AbstractComponent } from '@components/AbstractComponent'
-import BasePage from './BasePage'
 import { expect } from 'detox'
+
+import { AbstractComponent } from '@components/AbstractComponent.ts'
+
+import BasePage from './BasePage.ts'
 
 export default new (class SwipePage extends BasePage {
   private swipeScreen = new AbstractComponent('Swipe-screen')

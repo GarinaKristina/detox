@@ -1,5 +1,6 @@
-import { BaseComponent } from '@components/index.ts'
 import { expect } from 'detox'
+
+import { BaseComponent } from '@components/index.ts'
 
 export class Switch extends BaseComponent {
   constructor(locator: string | RegExp) {
