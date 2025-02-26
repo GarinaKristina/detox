@@ -1,0 +1,32 @@
+{
+  "name": "detox",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "Detox pet project",
+  "main": "index.js",
+  "scripts": {
+    "build:ios": "cd ../ && npm run ios.dev && npm run copy:ios:build",
+    "copy:ios:build": "chmod +x copyApp.sh && ./copyApp.sh",
+    "test:ios": "detox test -c ios"
+  },
+  "author": "Kristina Garina",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.8",
+    "@babel/preset-env": "^7.26.8",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/jest": "^29.5.14",
+    "babel-jest": "^29.7.0",
+    "detox": "^20.33.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-import-x": "^4.6.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.5.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0",
+    "winston": "^3.17.0"
+  }
+}
