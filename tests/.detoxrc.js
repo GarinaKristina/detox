@@ -28,10 +28,13 @@ module.exports = {
     ios: {
       type: 'ios.app',
       binaryPath: 'app/wdiodemoapp.app',
+      build:
+        'xcodebuild -project ../ios/wdiodemoapp.xcodeproj -scheme wdiodemoapp -sdk iphonesimulator -configuration Debug -derivedDataPath ../ios/build',
     },
     android: {
       type: 'android.apk',
       binaryPath: 'app/android.wdio.native.apk',
+
       testBinaryPath: 'app/app-debug-androidTest.apk',
       reversePorts: [8081],
     },

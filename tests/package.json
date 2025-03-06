@@ -5,7 +5,7 @@
   "description": "Detox pet project",
   "main": "index.js",
   "scripts": {
-    "build:ios": "cd ../ && npm run ios.dev && npm run copy:ios:build",
+    "build:ios": "detox build --configuration ios",
     "copy:ios:build": "chmod +x copyApp.sh && ./copyApp.sh",
     "test:ios": "detox test -c ios"
   },
