@@ -10,6 +10,29 @@ This repository contains a pet project for automated testing on the iOS platform
 - **Jest** as the testing framework
 - Prettier and ESLint for code formatting and linting
 
+## Precondition
+
+You need setup XCode simulator and Android Studio emulator
+
+In this framework used nex devices
+
+```
+ devices: {
+    simulator: {
+      type: 'ios.simulator',
+      device: {
+        type: 'iPhone 16 Pro',
+      },
+    },
+    emulator: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'My_Android',
+      },
+    },
+    }
+```
+
 ## Installation
 
 To set up the project, follow these steps:
@@ -18,42 +41,60 @@ To set up the project, follow these steps:
 2. Install dependencies for app:
 
 ```
+
 npm install
 npm run ios.pods
+
 ```
 
 3. Go to folder with tests
 
 ```
+
 cd tests
+
 ```
 
 4. Install dependencies for automation tests
 
 ```
+
 npm install
+
 ```
 
 5. Build ios app
 
 ```
+
 npm run build:ios
+
 ```
 
 6. Build android app
 
 ```
+
 npm run build:android
+
 ```
 
 7. Running IOS Tests
 
 ```
+
 npm run test:ios
+
 ```
 
 8. Running Android Tests
 
 ```
+
 npm run test:android
+
+```
+
+```
+
 ```
