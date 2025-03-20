@@ -94,7 +94,3 @@ npm run test:ios
 npm run test:android
 
 ```
-
-```
-
-```
