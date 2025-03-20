@@ -6,8 +6,10 @@
   "main": "index.js",
   "scripts": {
     "build:ios": "detox build --configuration ios",
+    "build:android": "detox build --configuration android",
     "copy:ios:build": "chmod +x copyApp.sh && ./copyApp.sh",
-    "test:ios": "detox test -c ios"
+    "test:ios": "detox test -c ios",
+    "test:android": "detox test -c android"
   },
   "author": "Kristina Garina",
   "license": "ISC",

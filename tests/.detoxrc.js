@@ -2,7 +2,7 @@
 module.exports = {
   testRunner: {
     args: {
-      $0: 'jest',
+      $0: 'node_modules/.bin/jest',
       config: './jest.config.ts',
     },
     jest: {
@@ -34,10 +34,11 @@ module.exports = {
     },
     android: {
       type: 'android.apk',
-       build: 'cd ../android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
-      binaryPath: 'android/app/build/outputs/apk/debug/android.wdio.native.apk'
-
-      testBinaryPath: 'app//anandroidTest.apk',
+      build:
+        'cd ../android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release',
+      binaryPath: '../android/app/build/outputs/apk/release/app-release.apk',
+      testBinaryPath:
+        '../android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk',
       reversePorts: [8081],
     },
   },
@@ -51,7 +52,7 @@ module.exports = {
     emulator: {
       type: 'android.emulator',
       device: {
-        avdName: 'Pixel_API_34_AOSP',
+        avdName: 'My_Android',
       },
     },
   },

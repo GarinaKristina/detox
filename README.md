@@ -34,15 +34,26 @@ cd tests
 npm install
 ```
 
-5. Build app and copy to tests framework
+5. Build ios app
 
 ```
 npm run build:ios
 ```
 
-6. Running Tests
-   To execute the tests on an iOS simulator, use the following command:
+6. Build android app
+
+```
+npm run build:android
+```
+
+7. Running IOS Tests
 
 ```
 npm run test:ios
+```
+
+8. Running Android Tests
+
+```
+npm run test:android
 ```

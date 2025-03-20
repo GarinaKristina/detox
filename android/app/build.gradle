@@ -76,6 +76,7 @@ android {
 
     namespace "com.wdiodemoapp"
     defaultConfig {
+         testBuildType "release" 
         applicationId "com.wdiodemoapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
