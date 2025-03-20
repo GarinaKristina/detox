@@ -27,15 +27,17 @@ module.exports = {
   apps: {
     ios: {
       type: 'ios.app',
-      binaryPath: 'app/wdiodemoapp.app',
+      binaryPath:
+        '../ios/build/Build/Products/Debug-iphonesimulator//wdiodemoapp.app',
       build:
         'xcodebuild -project ../ios/wdiodemoapp.xcodeproj -scheme wdiodemoapp -sdk iphonesimulator -configuration Debug -derivedDataPath ../ios/build',
     },
     android: {
       type: 'android.apk',
-      binaryPath: 'app/android.wdio.native.apk',
+       build: 'cd ../android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
+      binaryPath: 'android/app/build/outputs/apk/debug/android.wdio.native.apk'
 
-      testBinaryPath: 'app/app-debug-androidTest.apk',
+      testBinaryPath: 'app//anandroidTest.apk',
       reversePorts: [8081],
     },
   },
