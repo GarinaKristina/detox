@@ -7,9 +7,10 @@
   "scripts": {
     "build:ios": "detox build --configuration ios",
     "build:android": "detox build --configuration android",
-    "copy:ios:build": "chmod +x copyApp.sh && ./copyApp.sh",
     "test:ios": "detox test -c ios",
-    "test:android": "detox test -c android"
+    "test:android": "detox test -c android",
+    "e2e:ios": "npm run build:ios && npm run test:ios",
+    "e2e:android": "npm run build:android && npm run test:android"
   },
   "author": "Kristina Garina",
   "license": "ISC",
