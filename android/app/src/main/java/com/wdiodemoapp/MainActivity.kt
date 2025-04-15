@@ -1,6 +1,6 @@
 package com.wdiodemoapp
+import com.wix.detox.Detox
 import expo.modules.ReactActivityDelegateWrapper
-
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 // for react-native-bootsplash
 import com.zoontek.rnbootsplash.RNBootSplash;
+
 
 class MainActivity : ReactActivity() {
 
@@ -31,8 +32,9 @@ class MainActivity : ReactActivity() {
    * https://reactnavigation.org/docs/getting-started/#installing-dependencies-into-a-bare-react-native-project
    * https://github.com/zoontek/react-native-bootsplash?tab=readme-ov-file#android-1
    */ 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    RNBootSplash.init(this, R.style.BootTheme) // ⬅️ initialize the splash screen
-    super.onCreate(null) // super.onCreate(null) with react-native-screens
-  }
+override fun onCreate(savedInstanceState: Bundle?) {
+    Detox.onCreate(this, savedInstanceState)  
+    RNBootSplash.init(this, R.style.BootTheme) 
+    super.onCreate(savedInstanceState) 
+}
 }
