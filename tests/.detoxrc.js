@@ -34,11 +34,11 @@ module.exports = {
     },
     android: {
       type: 'android.apk',
+      binaryPath: '../android/app/build/outputs/apk/debug/app-debug.apk',
       build:
-        'cd ../android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release',
-      binaryPath: '../android/app/build/outputs/apk/release/app-release.apk',
+        'cd ../android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
       testBinaryPath:
-        '../android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk',
+        '../android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk',
       reversePorts: [8081],
     },
   },

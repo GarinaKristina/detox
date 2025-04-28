@@ -78,3 +78,13 @@ npm run test:ios
 npm run test:android
 
 ```
+
+Scripts for gradle
+
+```
+ cd android
+./gradlew clean
+./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug
+
+
+```
